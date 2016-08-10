@@ -56,17 +56,17 @@ def validate(context, url, normalize_url_func=_normalize_url):
     return False
 
 
-    def boundingbox(width, height):
-        if width is not None and height is None:
-            height = '-1'
-        elif width is None and height is not None:
-            width = '-1'
-        elif width is None and height is None:
-            width = height = '-1'
-        else:
-            width = 'iw*min({width}/iw\,{height}/ih)'.format(width=width, height=height)
-            height = 'ih*min({width}/iw\,{height}/ih)'.format(width=width, height=height)
-        return '{width}:{height}'.format(width=width, height=height)
+def boundingbox(width, height):
+    if width is not None and height is None:
+        height = '-1'
+    elif width is None and height is not None:
+        width = '-1'
+    elif width is None and height is None:
+        width = height = '-1'
+    else:
+        width = 'iw*min({width}/iw\,{height}/ih)'.format(width=width, height=height)
+        height = 'ih*min({width}/iw\,{height}/ih)'.format(width=width, height=height)
+    return '{width}:{height}'.format(width=width, height=height)
 
 
 # def return_contents(response, url, callback, context, req_start=None):
